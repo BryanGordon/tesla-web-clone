@@ -1,9 +1,10 @@
 ---
-const { color, title, subtitle, btnText } = Astro.props
+const { color, title, subtitle } = Astro.props
 const textColor = `text-${color}`
 ---
 
-<section class="slides-section bg-black h-screen w-screen text-center relative overflow-hidden"
+<section 
+  class="slides-section bg-black h-screen w-screen text-center relative overflow-hidden"
   data-header-color={color}
 >
 
@@ -13,16 +14,12 @@ const textColor = `text-${color}`
       <p class=`${textColor} text-sm`>{subtitle}</p>
     </header>
 
-    <footer class="flex flex-col flex-grow flex-nowrap justify-end pb-20">
-      <div>
-        <a class="border-[3px] border-white text-sm rounded font-medium text-white px-12 py-2 hover:bg-white hover:text-black transition-colors" href="#">
-          {btnText}
-        </a>
-      </div>
+    <footer class="flex flex-col flex-grow justify-end pb-20">
+      <slot name="footer-slide" />
     </footer>
   </div>
 
   <div class="absolute top-0 bottom-0 h-full w-full">
-    <slot name="background" />
+    <slot name="background-slide" />
   </div>
 </section>
